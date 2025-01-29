@@ -130,7 +130,7 @@ code {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 2rem; /* Reduced from 2.5rem */
+  height: 0rem; /* Reduced from 2.5rem */
   opacity: 0.3;
   transition: opacity 0.3s ease;
   padding: 0;

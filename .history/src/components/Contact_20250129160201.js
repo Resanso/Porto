@@ -20,15 +20,6 @@ const Contact = () => {
       <div className="absolute inset-0 bg-gradient-radial from-navy-lighter/20 to-transparent" />
 
       <div className="max-w-4xl mx-auto px-4 relative z-10">
-        {/* Add What's Next? heading */}
-        <motion.h3
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          className="text-neon-cyan font-mono text-base md:text-lg mb-4 text-center"
-        >
-          What's Next?
-        </motion.h3>
-
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

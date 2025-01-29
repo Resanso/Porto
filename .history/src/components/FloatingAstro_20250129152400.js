@@ -1,32 +1,25 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 const FloatingAstro = () => {
-  // Move all hooks to the top
+  // Add check for mobile view
+  const isMobile = window.innerWidth < 768;
+
+  // If mobile, don't render the component
+  if (isMobile) return null;
+
   const containerRef = useRef(null);
   const lastScrollY = useRef(0);
   const scrollVelocity = useRef(0);
   const { scrollYProgress, scrollY } = useScroll();
-  const [isMobile, setIsMobile] = useState(false);
 
-  // Check for mobile in useEffect
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
-
-  // Create transform points
+  // Create multiple transform points for the entire page journey
   const xPosition = useTransform(
     scrollYProgress,
-    [0, 0.3, 0.6, 0.9, 1],
-    ["-300%", "170%", "-70%", "170%", "500%"]
+    [0, 0.3, 0.6, 0.9, 1], // scroll progress points
+    ["-300%", "170%", "-70%", "170%", "500%"] // x positions throughout the page
   );
 
   const yPosition = useTransform(
@@ -35,9 +28,8 @@ const FloatingAstro = () => {
     ["-60%", "-60%", "0%", "-60%", "0%"]
   );
 
-  // Main 3D rendering effect
   useEffect(() => {
-    if (!containerRef.current || isMobile) return;
+    if (!containerRef.current) return;
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
@@ -173,10 +165,7 @@ const FloatingAstro = () => {
       }
       renderer.dispose();
     };
-  }, [isMobile]);
-
-  // Return null for mobile devices
-  if (isMobile) return null;
+  }, []);
 
   return (
     <motion.div

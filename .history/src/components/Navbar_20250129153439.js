@@ -64,24 +64,22 @@ const Navbar = ({ darkMode, setDarkMode }) => {
 
   return (
     <header
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        isScrolled ? "bg-glass-dark backdrop-blur-lg" : ""
-      } ${!isVisible ? "-translate-y-full md:translate-y-0" : "translate-y-0"}`}
+      className={`fixed top-0 w-full z-50 transition-all duration-300 transform
+        ${isScrolled ? "bg-glass-dark backdrop-blur-lg" : ""}
+        ${isVisible ? "translate-y-0" : "-translate-y-full"}
+      `}
     >
       <ScrollProgress />
       <nav className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          {/* Updated Logo styling */}
+          {/* Logo */}
           <motion.a
             href="#home"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="relative group"
+            className="text-neon-cyan font-mono text-lg"
           >
-            <span className="font-mono text-lg bg-gradient-to-r from-neon-cyan to-neon-purple bg-clip-text text-transparent hover:text-neon-cyan transition-colors duration-300">
-              &lt;R/&gt;
-            </span>
-            <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-gradient-to-r from-neon-cyan to-neon-purple group-hover:w-full transition-all duration-300" />
+            &lt;RS /&gt;
           </motion.a>
 
           {/* Desktop Navigation */}

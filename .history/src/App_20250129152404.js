@@ -1,7 +1,7 @@
 import { useState, useEffect, Suspense, lazy } from "react";
 import Navbar from "./components/Navbar";
 import LoadingScreen from "./components/LoadingScreen";
-// import FloatingAstro from "./components/FloatingAstro";  // Commented out FloatingAstro import
+import FloatingAstro from "./components/FloatingAstro";
 
 // Lazy load komponen berat
 const Hero = lazy(() => import("./components/Hero"));
@@ -39,8 +39,8 @@ function App() {
 
   return (
     <div className="min-h-screen bg-dark-blue relative overflow-x-hidden">
-      {/* FloatingAstro component removed
-      {!isMobile && <FloatingAstro />} */}
+      {/* Only render FloatingAstro if not mobile */}
+      {!isMobile && <FloatingAstro />}
       <div className="fixed inset-0 bg-circuit-pattern opacity-5" />
       <div className="fixed inset-0 bg-gradient-to-b from-navy-lighter/20 via-dark-blue to-dark-blue/90" />
       <Suspense fallback={null}>

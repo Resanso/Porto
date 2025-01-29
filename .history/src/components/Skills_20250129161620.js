@@ -35,9 +35,9 @@ const SkillCard = ({ category, skills, index, icon: CategoryIcon }) => {
   };
 
   return (
-    <div className="p-12">
+    <div className="p-8">
       {" "}
-      {/* Increased outer padding container from p-8 to p-12 */}
+      {/* Add outer padding container */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -47,8 +47,8 @@ const SkillCard = ({ category, skills, index, icon: CategoryIcon }) => {
         style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
         className="relative group perspective-1000"
       >
-        {/* Background layers with smaller glow effect */}
-        <div className="absolute -inset-2 bg-gradient-to-r from-neon-cyan/20 to-neon-purple/20 rounded-xl opacity-0 group-hover:opacity-75 group-hover:blur-lg transition-all duration-300" />
+        {/* Background layers with glow effect */}
+        <div className="absolute -inset-4 bg-gradient-to-r from-neon-cyan/20 to-neon-purple/20 rounded-2xl opacity-0 group-hover:opacity-75 group-hover:blur-xl transition-all duration-300" />
         <div className="absolute inset-0 bg-navy-light/90 rounded-xl backdrop-blur-xl" />
 
         {/* Main content - adjusted padding for mobile */}

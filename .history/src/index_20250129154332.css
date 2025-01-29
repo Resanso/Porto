@@ -110,12 +110,12 @@ code {
   }
 }
 
-/* Text ticker styles - Reduced spacing */
+/* Text ticker styles - Updated spacing */
 .ticker-container {
   overflow: hidden;
   position: relative;
-  height: 2rem; /* Reduced from 2.5rem */
-  margin-bottom: 0.25rem; /* Reduced from 0.5rem */
+  height: 2.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .ticker-wrapper {
@@ -130,7 +130,7 @@ code {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 2rem; /* Reduced from 2.5rem */
+  height: 2.5rem;
   opacity: 0.3;
   transition: opacity 0.3s ease;
   padding: 0;
@@ -154,11 +154,11 @@ code {
   }
   33%,
   58% {
-    transform: translateY(-2rem); /* Adjusted to match new height */
+    transform: translateY(-2.5rem);
   }
   66%,
   91% {
-    transform: translateY(-4rem); /* Adjusted to match new height */
+    transform: translateY(-5rem);
   }
   100% {
     transform: translateY(0);

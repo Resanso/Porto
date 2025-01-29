@@ -154,7 +154,7 @@ code {
   }
   33%,
   58% {
-    transform: translateY(-2rem); /* Adjusted to match new height */
+    transform: translateY(-1rem); /* Adjusted to match new height */
   }
   66%,
   91% {

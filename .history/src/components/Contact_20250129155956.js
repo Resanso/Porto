@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { FiSend } from "react-icons/fi"; // Add this import at the top
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -15,24 +14,24 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-16 md:py-32 relative">
-      <div className="absolute inset-0 bg-circuit-pattern opacity-5" />
+    <section id="contact" className="py-32 bg-dark-blue relative">
       <div className="absolute inset-0 bg-gradient-radial from-navy-lighter/20 to-transparent" />
-
-      <div className="max-w-4xl mx-auto px-4 relative z-10">
-        {/* Add What's Next? heading */}
-        <motion.h3
+      <div className="max-w-3xl mx-auto px-4 relative">
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          className="text-neon-cyan font-mono text-base md:text-lg mb-4 text-center"
+          className="text-center mb-16"
         >
-          What's Next?
-        </motion.h3>
+          <span className="text-neon-cyan font-mono">04. What's Next?</span>
+          <h2 className="text-5xl font-mono text-light-slate mt-4">
+            Get In Touch
+          </h2>
+        </motion.div>
 
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          className="text-2xl md:text-4xl font-mono text-lightest-slate mb-8 text-center"
+          className="text-2xl md:text-4xl font-mono text-lightest-slate mb-6 md:mb-16 text-center"
         >
           <span className="text-neon-cyan font-normal">04.</span> Get In Touch
         </motion.h2>
@@ -41,7 +40,7 @@ const Contact = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="card-glass rounded-lg p-4 md:p-8 mt-4 md:mt-8"
+          className="card-glass rounded-lg p-3 md:p-8"
         >
           <form onSubmit={handleSubmit} className="space-y-3 md:space-y-6">
             {/* Name and Email Row */}

@@ -8,33 +8,19 @@ const Navbar = ({ darkMode, setDarkMode }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
-  const [isMobile, setIsMobile] = useState(false);
-
-  // Check for mobile
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
 
   // Handle scroll effect
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
 
-      // Only hide navbar on mobile
-      if (isMobile) {
-        if (currentScrollY > lastScrollY) {
-          setIsVisible(false);
-        } else {
-          setIsVisible(true);
-        }
+      // Menentukan apakah navbar harus disembunyikan berdasarkan arah scroll
+      if (currentScrollY > lastScrollY) {
+        // Scrolling down
+        setIsVisible(false);
       } else {
-        setIsVisible(true); // Always visible on desktop
+        // Scrolling up
+        setIsVisible(true);
       }
 
       setIsScrolled(currentScrollY > 20);
@@ -43,7 +29,7 @@ const Navbar = ({ darkMode, setDarkMode }) => {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY, isMobile]);
+  }, [lastScrollY]);
 
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
@@ -71,17 +57,14 @@ const Navbar = ({ darkMode, setDarkMode }) => {
       <ScrollProgress />
       <nav className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          {/* Updated Logo styling */}
+          {/* Logo */}
           <motion.a
             href="#home"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="relative group"
+            className="text-neon-cyan font-mono text-lg"
           >
-            <span className="font-mono text-lg bg-gradient-to-r from-neon-cyan to-neon-purple bg-clip-text text-transparent hover:text-neon-cyan transition-colors duration-300">
-              &lt;R/&gt;
-            </span>
-            <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-gradient-to-r from-neon-cyan to-neon-purple group-hover:w-full transition-all duration-300" />
+            &lt;RS /&gt;
           </motion.a>
 
           {/* Desktop Navigation */}
@@ -105,7 +88,7 @@ const Navbar = ({ darkMode, setDarkMode }) => {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-light-slate hover:text-neon-cyan transition-colors"
+            className="md:hidden text-light-slate hover:text-neon-cyan transition-colors z-50"
             onClick={() => setIsOpen(!isOpen)}
           >
             {isOpen ? <FiX size={24} /> : <FiMenu size={24} />}
@@ -116,32 +99,30 @@ const Navbar = ({ darkMode, setDarkMode }) => {
         <AnimatePresence>
           {isOpen && (
             <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.2 }}
-              className="fixed left-0 right-0 top-[60px] bg-glass-dark backdrop-blur-lg md:hidden"
+              initial={{ opacity: 0, x: "100%" }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: "100%" }}
+              transition={{ type: "tween", duration: 0.3 }}
+              className="fixed inset-0 bg-glass-dark backdrop-blur-lg md:hidden"
             >
-              <div className="container mx-auto py-4">
-                <div className="flex flex-col items-center space-y-4">
-                  {["about", "projects", "skills", "contact"].map(
-                    (item, index) => (
-                      <motion.button
-                        key={item}
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: index * 0.1 }}
-                        onClick={() => scrollToSection(item)}
-                        className="text-light-slate hover:text-neon-cyan transition-colors text-lg w-full text-center py-2"
-                      >
-                        <span className="font-mono text-neon-cyan">{`0${
-                          index + 1
-                        }.`}</span>{" "}
-                        {item.charAt(0).toUpperCase() + item.slice(1)}
-                      </motion.button>
-                    )
-                  )}
-                </div>
+              <div className="flex flex-col items-center justify-center h-full space-y-8">
+                {["about", "projects", "skills", "contact"].map(
+                  (item, index) => (
+                    <motion.button
+                      key={item}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: index * 0.1 }}
+                      onClick={() => scrollToSection(item)}
+                      className="text-light-slate hover:text-neon-cyan transition-colors text-xl"
+                    >
+                      <span className="font-mono text-neon-cyan">{`0${
+                        index + 1
+                      }.`}</span>{" "}
+                      {item.charAt(0).toUpperCase() + item.slice(1)}
+                    </motion.button>
+                  )
+                )}
               </div>
             </motion.div>
           )}

@@ -26,13 +26,13 @@ const FloatingAstro = () => {
   const xPosition = useTransform(
     scrollYProgress,
     [0, 0.3, 0.6, 0.9, 1],
-    ["-300%", "170%", "-70%", "170%", "500%"]
+    ["-300%", "170%", "170%", "170%", "500%"]
   );
 
   const yPosition = useTransform(
     scrollYProgress,
     [0, 0.25, 0.5, 0.75, 1],
-    ["-60%", "-60%", "0%", "-60%", "0%"]
+    ["-60%", "-60%", "-60%", "-60%", "0%"]
   );
 
   // Main 3D rendering effect
