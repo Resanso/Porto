@@ -1,0 +1,186 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+/* Hexagon shape */
+.hexagon-bg {
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+@keyframes ping-slow {
+  0% {
+    transform: scale(1);
+    opacity: 0.2;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.2;
+  }
+}
+
+.animate-ping-slow {
+  animation: ping-slow 3s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.card-glass {
+  background: rgba(16, 24, 39, 0.3);
+  backdrop-filter: blur(5px); /* Mengurangi blur */
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: transform 0.3s ease;
+  will-change: transform;
+}
+
+.card-glass:hover {
+  transform: translateY(-5px);
+  background: rgba(16, 24, 39, 0.4);
+  border-color: rgba(100, 255, 218, 0.1);
+}
+
+/* Mengoptimalkan animasi */
+@keyframes glow {
+  0%,
+  100% {
+    box-shadow: 0 0 10px rgba(100, 255, 218, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(100, 255, 218, 0.3);
+  }
+}
+
+.glow-effect {
+  animation: glow 3s ease-in-out infinite;
+  will-change: box-shadow;
+}
+
+.gradient-border {
+  position: relative;
+}
+
+.gradient-border::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(45deg, #64ffda, #bd34fe, #64ffda);
+  border-radius: inherit;
+  z-index: -1;
+  animation: rotate 5s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Text ticker styles */
+.ticker-container {
+  height: 2.5rem; /* Reduced from 3rem */
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 1rem; /* Reduced from 1.5rem */
+}
+
+.ticker-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  animation: text-slide 9s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.ticker-text {
+  height: 2.5rem; /* Reduced from 3rem */
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+@keyframes text-slide {
+  0%,
+  30% {
+    transform: translateY(0);
+  }
+  33%,
+  63% {
+    transform: translateY(-2.5rem); /* Adjusted to match new height */
+  }
+  66%,
+  96% {
+    transform: translateY(-5rem); /* Adjusted to match new height */
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Model container gradient mask */
+.model-container {
+  mask-image: linear-gradient(to right, transparent, black 30%, black 100%);
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 30%,
+    black 100%
+  );
+}
+
+.model-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 50%,
+    #0a192f 80%
+  ); /* Mengubah dari 70% dan 100% menjadi 50% dan 80% */
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Social card animation */
+.social-card {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s ease-in-out;
+}
+
+.name-container:hover .social-card {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.social-link {
+  transition: all 0.2s ease-in-out;
+}
+
+.social-link:hover {
+  transform: translateY(-2px);
+  color: #64ffda;
+}
