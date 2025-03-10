@@ -35,21 +35,22 @@ const Projects = () => {
       color: "#64ffda",
     },
     {
-      title: "EzyBrain",
-      description:
-        "Learning platform with ai-powered content recommendations and progress tracking",
-      image: "/assets/project2.png",
+      title: "NutriApp",
+      description: "track your daily nutrition intake",
+      image: "/assets/homepagenutriapp.jpg",
       tech: ["Flutter", "Firebase", "GetX"],
-      github: "https://github.com/Resanso",
+      github: "https://github.com/Resanso/NutriApp",
       live: "https://example.com",
       color: "#bd34fe",
     },
     {
-      title: "Coming Soon",
-      description: "stay tuned for more exciting projects",
-      image: "https://picsum.photos/800/600?random=3",
-      tech: [""],
-      github: "https://github.com",
+      title: "JimApp",
+      description:
+        "Fitness app with real-time workout tracking and exercise feature",
+      image: "/assets/stats.jpg",
+      tech: ["Flutter", "GetX", "Firebase"],
+      github:
+        "https://github.com/Mobile-Innovation-Laboratory/Flutter_ResanSo_JimApp",
       live: "https://example.com",
       color: "#61dafb",
     },
@@ -66,7 +67,7 @@ const Projects = () => {
   return (
     <section
       id="projects"
-      className="py-20 md:py-32 bg-dark-blue relative overflow-hidden"
+      className="py-32 bg-dark-blue relative overflow-hidden"
     >
       <div className="absolute inset-0 bg-circuit-pattern opacity-5" />
       <div className="absolute inset-0 bg-gradient-radial from-navy-lighter/20 to-transparent" />
@@ -92,7 +93,7 @@ const Projects = () => {
               className="group relative h-[400px] perspective-1000"
             >
               {/* Background Image */}
-              <div
+              <co
                 className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-40 transition-opacity duration-500 backdrop-blur-[2px]"
                 style={{
                   backgroundImage: `url(${project.image})`,
@@ -166,7 +167,7 @@ const Projects = () => {
         </div>
 
         {/* Mobile Carousel View */}
-        <div className="md:hidden relative px-4">
+        <div className="md:hidden relative">
           <div className="overflow-hidden">
             <motion.div
               animate={{ x: `-${currentIndex * 100}%` }}
@@ -175,7 +176,7 @@ const Projects = () => {
             >
               {projects.map((project, index) => (
                 <div key={index} className="w-full flex-shrink-0">
-                  <div className="group relative h-[350px] perspective-1000 px-2">
+                  <div className="group relative h-[400px] perspective-1000 px-2">
                     {/* Background Image */}
                     <div
                       className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-40 transition-opacity duration-500 backdrop-blur-[2px]"
@@ -186,56 +187,65 @@ const Projects = () => {
                       }}
                     />
 
-                    {/* Card Content - Adjusted for mobile */}
-                    <div className="card-glass h-full p-4 rounded-lg relative z-10 flex flex-col">
+                    {/* Card Content */}
+                    <div className="card-glass h-full p-6 rounded-lg relative z-10 flex flex-col backdrop-blur-[5px] group-hover:backdrop-blur-[3px] transition-all duration-300">
+                      {/* ... existing card content ... */}
                       <div>
-                        <div className="flex items-center justify-between mb-3">
+                        <div className="flex items-center justify-between mb-4">
                           <div
-                            className="w-10 h-1 rounded-full"
+                            className="w-12 h-1 rounded-full"
                             style={{ backgroundColor: project.color }}
                           />
-                          <div className="flex gap-3">
+                          <div className="flex gap-4 relative z-50">
+                            {" "}
+                            {/* Tambahkan z-50 */}
                             <motion.a
                               whileHover={{ y: -2 }}
                               href={project.github}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="text-light-slate hover:text-neon-cyan"
+                              className="text-light-slate hover:text-neon-cyan cursor-pointer" // Tambahkan cursor-pointer
+                              onClick={(e) => e.stopPropagation()} // Tambahkan stopPropagation
                             >
-                              <FiGithub size={18} />
+                              <FiGithub size={20} />
                             </motion.a>
                             <motion.a
                               whileHover={{ y: -2 }}
                               href={project.live}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="text-light-slate hover:text-neon-cyan"
+                              className="text-light-slate hover:text-neon-cyan cursor-pointer" // Tambahkan cursor-pointer
+                              onClick={(e) => e.stopPropagation()} // Tambahkan stopPropagation
                             >
-                              <FiExternalLink size={18} />
+                              <FiExternalLink size={20} />
                             </motion.a>
                           </div>
                         </div>
 
-                        <h3 className="text-xl font-medium text-lightest-slate mb-2">
+                        <h3 className="text-2xl font-medium text-lightest-slate mb-3 group-hover:text-neon-cyan transition-colors">
                           {project.title}
                         </h3>
-                        <p className="text-sm text-slate leading-relaxed mb-4">
+                        <p className="text-slate text-sm leading-relaxed mb-6">
                           {project.description}
                         </p>
                       </div>
 
+                      {/* Tech stack */}
                       <div className="mt-auto">
-                        <ul className="flex flex-wrap gap-2">
+                        <ul className="flex flex-wrap gap-3">
                           {project.tech.map((tech, i) => (
                             <li
                               key={i}
-                              className="text-xs font-mono px-2 py-1 rounded-full bg-navy-light/50 text-neon-cyan"
+                              className="text-xs font-mono px-3 py-1 rounded-full bg-navy-light/50 text-neon-cyan"
                             >
                               {tech}
                             </li>
                           ))}
                         </ul>
                       </div>
+
+                      {/* Hover border effect */}
+                      <div className="absolute inset-0 border border-neon-cyan/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     </div>
                   </div>
                 </div>
@@ -243,22 +253,22 @@ const Projects = () => {
             </motion.div>
           </div>
 
-          {/* Navigation Buttons - Adjusted for mobile */}
+          {/* Navigation Buttons */}
           <button
             onClick={prevSlide}
-            className="absolute left-2 top-1/2 -translate-y-1/2 bg-navy-light/80 p-2 rounded-full text-neon-cyan z-20"
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 bg-navy-light/80 p-3 rounded-full text-neon-cyan z-20"
           >
-            <FiChevronLeft size={20} />
+            <FiChevronLeft size={24} />
           </button>
           <button
             onClick={nextSlide}
-            className="absolute right-2 top-1/2 -translate-y-1/2 bg-navy-light/80 p-2 rounded-full text-neon-cyan z-20"
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 bg-navy-light/80 p-3 rounded-full text-neon-cyan z-20"
           >
-            <FiChevronRight size={20} />
+            <FiChevronRight size={24} />
           </button>
 
-          {/* Dots Indicator - Adjusted for mobile */}
-          <div className="flex justify-center gap-2 mt-4">
+          {/* Dots Indicator */}
+          <div className="flex justify-center gap-2 mt-6">
             {projects.map((_, index) => (
               <button
                 key={index}

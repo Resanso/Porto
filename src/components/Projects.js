@@ -35,12 +35,11 @@ const Projects = () => {
       color: "#64ffda",
     },
     {
-      title: "EzyBrain",
-      description:
-        "Learning platform with ai-powered content recommendations and progress tracking",
-      image: "/assets/project2.png",
+      title: "NutriApp",
+      description: "track your daily nutrition intake",
+      image: "/assets/homepagenutriapp.jpg",
       tech: ["Flutter", "Firebase", "GetX"],
-      github: "https://github.com/Resanso",
+      github: "https://github.com/Resanso/NutriApp",
       live: "https://example.com",
       color: "#bd34fe",
     },
